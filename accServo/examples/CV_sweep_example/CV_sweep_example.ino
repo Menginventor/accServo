@@ -8,7 +8,7 @@
 accServo ser;
 void setup() {
   ser.attach(SERVO_PIN);
-  ser.setMaxVel(100);// deg/sec
+  ser.setMaxVel(50);// deg/sec
   Serial.begin(115200);
 }
 
@@ -17,13 +17,13 @@ void loop() {
   ser.setPos(0);
   while (! ser.isFinish()) {
     ser.update();
-    Serial.println(ser.readPos());
+    Serial.println(ser.readVel());
     delay(10);
   }
   ser.setPos(180);
   while (! ser.isFinish()) {
     ser.update();
-    Serial.println(ser.readPos());
+    Serial.println(ser.readVel());
     delay(10);
   }
 
