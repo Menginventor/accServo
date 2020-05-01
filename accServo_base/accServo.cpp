@@ -26,7 +26,7 @@ void accServo::setMaxVel(float vel) {
   v_max = vel;
 }
 void accServo::setMaxAcc(float _acc) {
-  acc = _acc;
+  acc_max = _acc;
 }
 void accServo::setPosition(float pos) {
   if (pos == crr_pos) {
@@ -39,7 +39,7 @@ void accServo::setPosition(float pos) {
 
     }
     else { // const vel control
-      if (acc == 0) {    //No acc control
+      if (acc_max == 0) {    //No acc control
         mode = CV_MODE;
         s_crr = 0;
         s_goal = pos - crr_pos;
@@ -62,11 +62,11 @@ void accServo::setPosition(float pos) {
           s_crr = 0;
           s_goal = pos - crr_pos;
           if (s_goal > 0) {
-            crr_acc = acc;
+            crr_acc = acc_max ;
             v_peak = v_max;
           }
           else {
-            crr_acc = -acc;
+            crr_acc = -acc_max ;
             v_peak = -v_max;
           }
           /*Segment calculation*/
@@ -74,9 +74,9 @@ void accServo::setPosition(float pos) {
           if (abs(s_goal) < abs(pow(v_max, 2) / crr_acc) ) { //S < minimum, go triangle profile
             //Serial.println("Triangular mode");
             if (s_goal > 0) {
-              v_peak = sqrt(acc * abs(s_goal));
+              v_peak = sqrt(acc_max  * abs(s_goal));
             } else {
-              v_peak = -sqrt(acc * abs(s_goal));
+              v_peak = -sqrt(acc_max  * abs(s_goal));
             }
             //Serial.print("s_goal ");
             //Serial.println(s_goal);

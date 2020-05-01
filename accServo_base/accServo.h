@@ -11,6 +11,8 @@ class accServo {
     float init_pos;
     float goal_pos;
     /*For profile*/
+    float acc_max = 0;// Alway positive
+    float v_max = 0;
     float s_crr = 0;
     float s_goal = 0;
     float t1;
@@ -24,19 +26,19 @@ class accServo {
     int min_us = 544;
     int max_us = 2400;
 
+
     int deg2us(float deg);
     bool is_active = false;
     float crr_acc;// +- on movement direction
     float v_peak = 0;
     int mode = -1;
     unsigned long time_init = 0;
-
-  public:
-    bool debug_mode = true;
-    float acc = 0;// Alway positive
-    float v_max = 0;
-    float write_deg(float deg);
     Servo ser;
+  public:
+
+
+    float write_deg(float deg);
+
     /*Servo wrap up*/
     void attach(int pin);
     void attach(int pin, int min_us, int max_us);
