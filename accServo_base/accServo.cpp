@@ -91,7 +91,7 @@ void accServo::CA_setPos(float pos) {
     s_crr = 0;
   }
 }
-void accServo::setPosition(float pos) {
+void accServo::setPos(float pos) {
   if (pos == crr_pos) {
     /*Do nothing*/
   } else {

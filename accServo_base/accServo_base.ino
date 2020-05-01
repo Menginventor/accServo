@@ -3,12 +3,12 @@ accServo ser;
 void setup() {
   Serial.begin(115200);
   ser.attach(9);
-  ser.setPosition(0);
+  ser.setPos(0);
   delay(1000);
   //ser.setMaxVel(120);
   //ser.setMaxAcc(60);
 
-  ser.setPosition(180);
+  ser.setPos(180);
   while (!ser.isFinish()) {
     ser.update();
     Serial.println(ser.readPos());
@@ -25,13 +25,13 @@ void loop() {
   Serial.println(ser.readPos());
   delay(10);
   /*
-    ser.setPosition(180);
+    ser.setPos(180);
     while (!ser.isFinish()) {
       ser.update();
       Serial.println(ser.readPos());
       delay(20);
     }
-    ser.setPosition(0);
+    ser.setPos(0);
     while (!ser.isFinish()) {
       ser.update();
       Serial.println(ser.readPos());

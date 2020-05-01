@@ -52,7 +52,7 @@ void CA_setPos(float pos);
 
     /*Motion*/
     void update();
-    void setPosition(float pos);
+    void setPos(float pos);
     void setMaxVel(float vel);
     void setMaxAcc(float acc);
     bool isFinish();
