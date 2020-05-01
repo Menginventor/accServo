@@ -16,6 +16,11 @@ void accServo::attach(int pin, int _min_us, int _max_us) {
   max_us = _max_us;
 }
 
+void accServo::detach() {
+
+  ser.detach();
+}
+
 float accServo::write_deg(float deg) {
   int us = deg2us(deg);
   ser.writeMicroseconds(us);

@@ -49,7 +49,7 @@ void CA_setPos(float pos);
     /*Servo wrap up*/
     void attach(int pin);
     void attach(int pin, int min_us, int max_us);
-
+	void detach();
     /*Motion*/
     void update();
     void setPos(float pos);
