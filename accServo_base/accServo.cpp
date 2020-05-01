@@ -32,11 +32,9 @@ void accServo::setPosition(float pos) {
   if (pos == crr_pos) {
     /*Do nothing*/
   } else {
-
-    if (v_max == 0) { // No vel control
+    if (v_max == 0) { // No vel. control
       write_deg(pos);
       mode = CP_MODE;
-
     }
     else { // const vel control
       if (acc_max == 0) {    //No acc control
@@ -78,16 +76,14 @@ void accServo::setPosition(float pos) {
             } else {
               v_peak = -sqrt(acc_max  * abs(s_goal));
             }
-            //Serial.print("s_goal ");
-            //Serial.println(s_goal);
             t1 = v_peak / crr_acc;
             t2 = t1;
             tf = 2 * t1;
             s_acc = 0.5 * crr_acc * pow(t1, 2);
             s_cv = 0;
           }
-          else {
-            //Serial.println("Trapezoidal mode");
+          else {//Trapezoidal Profile
+
             t1 = v_peak / crr_acc;
             s_acc = 0.5 * crr_acc * pow(t1, 2);
 
