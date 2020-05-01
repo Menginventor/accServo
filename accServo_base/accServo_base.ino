@@ -1,5 +1,4 @@
 #include "accServo.h"
-#include <disp.h>
 accServo ser;
 void setup() {
   Serial.begin(115200);

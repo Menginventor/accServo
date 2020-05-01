@@ -27,13 +27,20 @@ class accServo {
     int max_us = 2400;
 
 
-    int deg2us(float deg);
+
     bool is_active = false;
     float crr_acc;// +- on movement direction
     float v_peak = 0;
     int mode = -1;
     unsigned long time_init = 0;
+    //Object
     Servo ser;
+    //Method
+    int deg2us(float deg);
+    void CA_update();
+    void CV_update();
+    void CV_setPos(float pos);
+void CA_setPos(float pos);
   public:
 
 
@@ -47,7 +54,7 @@ class accServo {
     void update();
     void setPosition(float pos);
     void setMaxVel(float vel);
-    void setMaxAcc(float _acc);
+    void setMaxAcc(float acc);
     bool isFinish();
     float readPos();
     float readVel();
